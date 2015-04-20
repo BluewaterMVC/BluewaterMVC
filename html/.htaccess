@@ -1,0 +1,37 @@
+# This configuration is best in the DOMAIN CONF file
+
+# Rewrite rules for BLuewater MVC Framework
+RewriteEngine on
+
+# If this is a FILE
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# If this is a DIRECTORY
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Grap everything and throw it at 'index.php'
+# Except images, CSS and JS files
+RewriteRule !\.(js|ico|gif|jpg|png|css)$ /index.php
+
+
+# **************************************************
+## Security Section:
+
+# Don't allow browsing of directories
+#Options -Indexes
+
+# *.ini won't be sent to the browser
+<Files *.ini>
+    Order deny,allow
+    Deny from all
+</Files>
+
+
+# **************************************************
+# Xdebug Profiling
+
+#php_value xdebug.profiler_output_dir /tmp
+#php_value xdebug.profiler_enable 1
+
+
+# eof
